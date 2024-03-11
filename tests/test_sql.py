@@ -2,9 +2,8 @@
 Test the SQL module
 """
 
-import os
-
 import logging
+import os
 
 import pytest
 
