@@ -2,8 +2,6 @@
 SQL Class
 """
 
-from itertools import product
-
 
 class Sql:
 
@@ -22,6 +20,7 @@ class Sql:
         for l in self.left:
             for r in self.right:
 
+                # both
                 if l[0] == r[0]:
                     ser = l + r[1:]
                     final.append(ser)
@@ -34,20 +33,19 @@ class Sql:
         for l in self.left:
             for r in self.right:
 
+                # both
                 if l[0] == r[0]:
                     ser = l + r[1:]
                     final.append(ser)
-                    continue
 
+                # right not in left
                 elif r[0] not in self.left_keys:
-                    continue
+                    pass
 
-                elif l[0] != r[0]:
+                # left not in right
+                else:
                     ser = l + (None, None)
                     final.append(ser)
-
-                else:
-                    raise ArithmeticError("Not possible")
 
         return sorted(list(set(final)))
 
@@ -57,20 +55,20 @@ class Sql:
         for r in self.right:
             for l in self.left:
 
+                # both
                 if l[0] == r[0]:
                     ser = l + r[1:]
                     final.append(ser)
                     continue
 
+                # left not in right
                 elif l[0] not in self.right_keys:
                     continue
 
-                elif l[0] != r[0]:
+                # right not in left
+                else:
                     ser = (r[0],) + (None, None) + r[1:]
                     final.append(ser)
-
-                else:
-                    raise ArithmeticError("Not possible")
 
         return sorted(list(set(final)))
 
@@ -80,19 +78,19 @@ class Sql:
         for l in self.left:
             for r in self.right:
 
+                # both
                 if l[0] == r[0]:
                     ser = l + r[1:]
                     final.append(ser)
 
+                # left not in right
                 elif r[0] not in self.left_keys:
                     ser = (r[0],) + (None, None) + r[1:]
                     final.append(ser)
 
-                elif l[0] != r[0]:
+                # right not in left
+                else:
                     ser = l + (None, None)
                     final.append(ser)
-
-                else:
-                    raise ArithmeticError("Not possible")
 
         return sorted(list(set(final)))
