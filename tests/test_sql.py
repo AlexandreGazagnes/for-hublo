@@ -13,7 +13,7 @@ from src.vars import table_a, table_b
 
 
 @pytest.fixture
-def test_sql():
+def sql():
     """ """
 
     sql = Sql(table_a, table_b)
@@ -36,9 +36,9 @@ class Ans:
     ]
 
     right = [
-        ("A", "1", "2", 1, 2),
-        ("C", "1", "2", None, None),
-        ("A", "3", "4", 1, 2),
+        ("A", 1, 2, "1", "2"),
+        ("A", 1, 2, "3", "4"),
+        ("C", None, None, "1", "2"),
     ]
 
     outter = [
