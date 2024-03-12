@@ -1,25 +1,21 @@
 [tool.poetry]
 name = "for-hublo"
-version = "0.1.0"
+version = "0.2.0"
 description = "just a simple project to code sql joins"
 authors = ["AlexandreGazagnes"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.10.0"
-black = "^24.2.0"
-isort = "^5.13.2"
-pytest = "^8.1.1"
-pre-commit = "^3.6.2"
-ruff = "^0.3.2"
-
 
 [tool.poetry.group.dev.dependencies]
 python = "3.10.12"
 pytest = "^8.1.1"
 ipython = "^8.22.2"
 black = "^24.2.0"
-
+isort = "^5.13.2"
+pre-commit = "^3.6.2"
+ruff = "^0.3.2"
 
 [build-system]
 requires = ["poetry-core"]
