@@ -2,8 +2,8 @@
 Test the SQL module
 """
 
-import logging
 import os
+import logging
 
 import pytest
 
@@ -22,6 +22,8 @@ def sql():
 
 class Ans:
     """Answer for the tests"""
+
+    inner_keys = ["A"]
 
     inner = [
         ("A", 1, 2, "1", "2"),
@@ -58,13 +60,16 @@ class TestSQL:
         assert sql.right == table_b
         assert sql.left_keys == ["A", "B"]
         assert sql.right_keys == ["A", "C"]
+        assert sql.inner_keys == ["A"]
+        assert sql.left_not_right == ["B"]
+        assert sql.right_not_left == ["C"]
 
     def test_inner(self, sql):
         """ """
 
         ans = sql.inner_join()
 
-        logging.warning(ans)
+        logging.info(ans)
 
         assert len(ans) == len(Ans.inner)
         assert sorted(ans) == sorted(Ans.inner)
@@ -74,7 +79,7 @@ class TestSQL:
 
         ans = sql.left_join()
 
-        logging.warning(ans)
+        logging.info(ans)
 
         assert len(ans) == len(Ans.left)
         assert sorted(ans) == sorted(Ans.left)
@@ -84,7 +89,7 @@ class TestSQL:
 
         ans = sql.right_join()
 
-        logging.warning(ans)
+        logging.info(ans)
 
         assert len(ans) == len(Ans.right)
         assert sorted(ans) == sorted(Ans.right)
@@ -94,7 +99,7 @@ class TestSQL:
 
         ans = sql.outter_join()
 
-        logging.warning(ans)
+        logging.info(ans)
 
         assert len(ans) == len(Ans.outter)
         assert sorted(ans) == sorted(Ans.outter)
